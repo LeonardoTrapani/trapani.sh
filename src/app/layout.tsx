@@ -6,6 +6,7 @@ import { GeistMono } from "geist/font/mono";
 import { clx } from "~~/utils";
 import { Navbar } from "~~/app/navbar";
 import { ViewTransitions } from "next-view-transitions";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://leotrapani.com"),
@@ -56,6 +57,7 @@ export default function RootLayout({
           <main className="mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0">
             <Navbar />
             {children}
+            <Analytics />
           </main>
         </body>
       </html>
