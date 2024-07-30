@@ -46,7 +46,7 @@ function CustomLink({
     return <a {...props} />;
   }
 
-  return <a href={href} target="_blank" rel="noopener noreferrer" {...props} />;
+  return <a href={href} target="_blank" {...props} />;
 }
 
 function CustomImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
