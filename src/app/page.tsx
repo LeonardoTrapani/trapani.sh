@@ -151,8 +151,16 @@ export default function HomePage() {
         endeavours. i love studying the&nbsp;
         <b>latest technologies</b> in the software development space, and
         applying them in real-world projects. if i&apos;m not coding, i&apos;m
-        likely reading books, playing rugby or practicing jiu-jitsu. raised in
-        milan, spent an exchange year in vancouver.
+        likely reading books, trying to start a{" "}
+        <a
+          href="https://www.youtube.com/@leotrapani"
+          target="_blank"
+          className="prose font-medium underline decoration-[0.1em] underline-offset-2 dark:prose-invert"
+        >
+          youtube channel
+        </a>
+        , playing rugby or practicing jiu-jitsu. raised in milan, spent an
+        exchange year in vancouver.
       </p>
 
       <div className="my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
