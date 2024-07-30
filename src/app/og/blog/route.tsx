@@ -98,12 +98,12 @@ export async function GET(request: Request) {
                 leotrapani.com
               </p>
               <img
-                src="https://leotrapani.com/l.png"
+                src="https://leotrapani.com/pfp.jpeg"
                 alt="leonardo trapani's icon"
                 width={70}
                 height={70}
                 style={{
-                  borderRadius: "70px",
+                  borderRadius: "100px",
                 }}
               />
             </div>
