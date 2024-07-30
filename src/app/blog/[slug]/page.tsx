@@ -34,7 +34,7 @@ export async function generateMetadata({
       url: `https://leonardotrapani.dev/blog/${post.slug}`,
       images: [
         {
-          url: `https://leonardotrapani.com/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+          url: `https://leotrapani.com/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
         },
       ],
     },
@@ -44,7 +44,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       creator: "@leonardotrapani",
       images: [
-        `https://leonardotrapani.com/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+        `https://leotrapani.com/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
       ],
     },
   };
@@ -69,10 +69,10 @@ export default function Post({ params }: { params: { slug: string } }) {
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
             description: post.metadata.description,
-            image: `https://leonardotrapani.com/og/blog?title=${post.metadata.title}&top=${formatDate(
+            image: `https://leotrapani.com/og/blog?title=${post.metadata.title}&top=${formatDate(
               post.metadata.date,
             )}`,
-            url: `https://leonardotrapani.com/blog/${post.slug}`,
+            url: `https://leotrapani.com/blog/${post.slug}`,
             author: {
               "@type": "Person",
               name: "Leonardo Trapani",

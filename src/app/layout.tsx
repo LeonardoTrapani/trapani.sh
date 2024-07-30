@@ -8,7 +8,7 @@ import { Navbar } from "~~/app/navbar";
 import { ViewTransitions } from "next-view-transitions";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://leonardotrapani.com"),
+  metadataBase: new URL("https://leotrapani.com"),
   title: {
     default: "Leonardo Trapani",
     template: "%s | Leonardo Trapani",
@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Leonardo Trapani",
     description: "Developer, Entrepreneur, Teenager",
-    url: "https://leonardotrapani.com",
+    url: "https://leotrapani.com",
     siteName: "Leonardo Trapani",
     locale: "en_US",
     type: "website",
-    images: ["https://leonardotrapani.com/og/home"],
+    images: ["https://leotrapani.com/og/home"],
   },
   robots: {
     index: true,
