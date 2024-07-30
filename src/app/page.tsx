@@ -84,13 +84,19 @@ function ExperienceSection({
       <h3 className="mb-6 text-xl font-medium">{title}</h3>
       {items.map((item, index) => (
         <div key={index}>
-          <a
-            href={item.link}
-            target="_blank"
-            className="font-medium underline decoration-neutral-400 decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600"
-          >
-            {item.name}
-          </a>
+          {item.link ? (
+            <a
+              href={item.link}
+              target="_blank"
+              className="font-medium underline decoration-neutral-400 decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600"
+            >
+              {item.name}
+            </a>
+          ) : (
+            <p className="font-medium underline decoration-neutral-400 decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600">
+              {item.name}
+            </p>
+          )}
           <p className="mt-2">{item.position}</p>
           <p className="mt-2 text-neutral-700 dark:text-neutral-300">
             {item.description}
@@ -140,7 +146,13 @@ export default function HomePage() {
       </div>
 
       <p className="prose prose-neutral dark:prose-invert">
-        this is going to be my description
+        i&apos;m a 18 y/o <b>software developer</b> and <b>entrepreneur</b>. i
+        love building exciting projects and engaging in creative entrepreneurial
+        endeavours. i love studying the&nbsp;
+        <b>latest technologies</b> in the software development space, and
+        applying them in real-world projects. if i&apos;m not coding, i&apos;m
+        likely reading books, playing rugby or practicing jiu-jitsu. raised in
+        milan, spent an exchange year in vancouver.
       </p>
 
       <div className="my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
