@@ -103,7 +103,7 @@ export async function GET(request: Request) {
                 width={70}
                 height={70}
                 style={{
-                  borderRadius: "100px",
+                  borderRadius: "70px",
                 }}
               />
             </div>
