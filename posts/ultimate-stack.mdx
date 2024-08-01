@@ -1,5 +1,5 @@
 ---
-title: "The most modern technologies for a developer in 2024"
+title: "The ultimate stack every full-stack engineer shuold use"
 description: "A presentation of the different technologies that form one of the most modern and efficient tech stacks today."
 date: "Aug 1, 2024"
 ---
@@ -17,7 +17,7 @@ If you speak Italian, I posted a video on Datapizza's youtube channel that you c
 ## The Goal of the Stack
 The Goal of this tech stack is to make the entire infrastructure **type-safe**: from database to front-end, I want to be able to know how the data I have is structured, to make development easier and safer.
 
-![Linting of the structure of the user object, thanks to a type-safe infrastructure](/images/mostmoderntechnologies/type-safe.png)
+![Linting of the structure of the user object, thanks to a type-safe infrastructure](/images/ultimatestack/type-safe.png)
 
 
 ## Typescript
@@ -28,7 +28,7 @@ The language of choice is [typescript](https://www.typescriptlang.org/). For the
 [NextJS](https://nextjs.org/) is a full-stack react framework and has many features. My favourites are:
 ### Server Side Rendering
 Server Side Rendering (SSR) allows the application to display the web-page on the server rather than rendering it in the browser. When a website’s JavaScript is rendered on the website’s server, a fully rendered html is sent to the client. On the other hand, Single Page Application (for example Plain React, using other bundlers such as vite), send a blank html file, that is rendered on the client with javascript.
-![SSR](/images/mostmoderntechnologies/ssr.png)
+![SSR](/images/ultimatestack/ssr.png)
 
 The benefits of SSR are:
 - **Improved Performance**: javascript rendering on the browser can become heavy performance-wise, for examle, on mobile or old devices. Rendering on the server, on the other hand, makes sure that the rendering happens with a strong device (the server), and removes that task from the user's device.
@@ -36,7 +36,7 @@ The benefits of SSR are:
 - **Better User Experience**: Sending a blank HTML like Single Page Applications do, have the result of showing a white screen, while the javascript is loading. On the other hand, with an already rendered by the server HTML, there is not going to be a white screen on the loading time, which itself is going to be way shorter, due to the better performance of the server.
 
 ### File Based Routing
-![File Based Routing](/images/mostmoderntechnologies/routing.png)
+![File Based Routing](/images/ultimatestack/routing.png)
 There are two types of routers in NextJS:
 
 - [App Router](https://nextjs.org/docs/app/building-your-application/routing)
@@ -48,7 +48,7 @@ Based on how the folder structured is, Next is going to create all the routing, 
 
 This is an example of the routing of one of my latest projects, [The Closer Fit](https://github.com/leonardotrapani/thecloserfit)
 
-![The Closer Fit File Routing](/images/mostmoderntechnologies/thecloserfitrouting.png)
+![The Closer Fit File Routing](/images/ultimatestack/thecloserfitrouting.png)
 
 ### Caching
 NextJS will automatically cache as many requests as possible. This has major benefits:
@@ -58,7 +58,7 @@ NextJS will automatically cache as many requests as possible. This has major ben
 
 The NextJS Caching is also highly customizable: you can choose how often the cache is going to be invalidated, and which functions or pages are going to be cached.
 
-![NextJS Caching](/images/mostmoderntechnologies/caching.png)
+![NextJS Caching](/images/ultimatestack/caching.png)
 
 ### More NextJS features
 NextJS has many more features, but I will not go in depth in those (check them out in the [docs](https://nextjs.org/docs)!)
@@ -187,7 +187,7 @@ From an aestethic standpoint it is on point, but most importantly, it is my favo
 
 Just this, to make it look this good:
 
-![Dialog with ShadcnUI in The Closer Fit](/images/mostmoderntechnologies/dialog.png)
+![Dialog with ShadcnUI in The Closer Fit](/images/ultimatestack/dialog.png)
 
 
 ## Authentication
@@ -202,14 +202,14 @@ For these reasons, I prefer an alternative, which gets the benefits of both not 
 
 2. [NextAuth](https://next-auth.js.org/): integrated with nextjs effortlessly (yes, it's made by the same team), and allows you to handle authentication this easily:
 
-![NextAuth Authentication code](/images/mostmoderntechnologies/auth.png)
+![NextAuth Authentication code](/images/ultimatestack/auth.png)
 
 ## Git
 I don't even think I should mention this, but for the sake of completeness I will.
 
 **Version control is necessary**. And [git](https://git-scm.com/) and [github](https://github.com/) are kind-of a monopoly in this field.
 
-![Git representation](/images/mostmoderntechnologies/git.png)
+![Git representation](/images/ultimatestack/git.png)
 
 ## State Management
 
@@ -221,7 +221,7 @@ The most standard way is using the regular useState, but this becomes a very bad
 ### Redux
 
 On the opposite side of the complexity spectrum, we find [redux](https://redux.js.org/):
-![redux](/images/mostmoderntechnologies/redux.png)
+![redux](/images/ultimatestack/redux.png)
 
 ### React Query
 
@@ -278,6 +278,6 @@ Other modern solutions are also available, such as [Subase](https://supabase.com
 
 Here is a diagram that summarizes most of the tech stack we built today:
 
-![Graph of the most modern tech stack](/images/mostmoderntechnologies/graph.png)
+![Graph of the most modern tech stack](/images/ultimatestack/graph.png)
 
 Use this Tech Stack and technologies as a blueprint, and get inspiration from this to create your own go-to tech stack.
