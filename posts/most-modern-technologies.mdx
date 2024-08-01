@@ -189,6 +189,7 @@ Just this, to make it look this good:
 
 ![Dialog with ShadcnUI in The Closer Fit](/images/mostmoderntechnologies/dialog.png)
 
+
 ## Authentication
 Handling authentication has never been so hard, and easy at the same time. With passkeys, OAuth, passowrds, reset passwords, encryption... Why would anyone handle all this and build everything out of the box, when you can use something else?
 
@@ -209,6 +210,45 @@ I don't even think I should mention this, but for the sake of completeness I wil
 **Version control is necessary**. And [git](https://git-scm.com/) and [github](https://github.com/) are kind-of a monopoly in this field.
 
 ![Git representation](/images/mostmoderntechnologies/git.png)
+
+## State Management
+
+### useState
+
+State management has always been a discussed an opinionated topic.
+The most standard way is using the regular useState, but this becomes a very bad approach when data has to be global and accessible in the entire app. In easy applications, though, the only global variables needed would be the user and authentication, but with NextAuth, this would be handled already, without the need of an external state manager.
+
+### Redux
+
+On the opposite side of the complexity spectrum, we find [redux](https://redux.js.org/):
+![redux](/images/mostmoderntechnologies/redux.png)
+
+### React Query
+
+When state management is only bound to data fetching (when all the data we need the share is fetched), [react query](https://tanstack.com/query/latest/docs/framework/react/overview) allows you to manage the flow and caching of fetch requests, and shares the data globally, and makes it accessible simply from a key.
+
+```tsx
+// It makes the fetching code go from this:
+useEffect(() => {
+    setLoading(true)
+
+    fetch(https://api.example/)
+        .then(res => res.json())
+        .then(setData)
+        .catch(setError)
+        .finally(() => setLoading(false))
+}, [])
+
+// To this:
+const { data, isLoading, isError } = useQuery({
+    queryKey: ["posts"], //accessible in the entire application
+    queryFn: getPosts
+})
+```
+
+### Zustand
+
+The last state management library that I want to talk about is [zustand](https://zustand-demo.pmnd.rs/). It is the easiest and with less boilerplate code way to share state globally, but it can sometimes be even **too** lightweight to handle more complex state management.
 
 ## Hosting
 
@@ -234,6 +274,10 @@ If you want to go for AWS, again, I would choose a service like AWS RDS, or any 
 
 Other modern solutions are also available, such as [Subase](https://supabase.com/)
 
-## Conclusion
+## Wrapping up
+
+Here is a diagram that summarizes most of the tech stack we built today:
+
+![Graph of the most modern tech stack](/images/mostmoderntechnologies/graph.png)
 
 Use this Tech Stack and technologies as a blueprint, and get inspiration from this to create your own go-to tech stack.
