@@ -232,6 +232,17 @@ export default function HomePage() {
             <UpRightArrowIcon />
           </a>
         </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.youtube.com/@leotrapani"
+          >
+            <p className="mr-1 h-7">youtube</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
       </ul>
     </main>
   );
