@@ -31,7 +31,7 @@ export async function generateMetadata({
       description: post.metadata.description,
       publishedTime,
       type: "article",
-      url: `https://leonardotrapani.dev/blog/${post.slug}`,
+      url: `https://leotrapani.com/blog/${post.slug}`,
       images: [
         {
           url: `https://leotrapani.com/og/blog?title=${post.metadata.title}&top=${publishedTime}`,

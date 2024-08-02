@@ -7,6 +7,15 @@ await import("./src/env.js");
 /** @type {import("next").NextConfig} */
 const config = {
   transpilePackages: ["next-mdx-remote"],
+  images: {
+    domains: ["i.ytimg.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+      },
+    ],
+  },
 };
 
 export default config;
