@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { MDX } from "~~/app/blog/[slug]/mdx";
 import { getBlogPostBySlug } from "~~/blog";
+import { redis } from "~~/lib/redis";
+import { ViewCounter } from "../view-counter";
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-US", {
@@ -88,6 +91,10 @@ export default function Post({ params }: { params: { slug: string } }) {
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.date)}
         </p>
+
+        <Suspense>
+          <Views slug={post.slug} />
+        </Suspense>
       </div>
 
       <article className="prose prose-neutral dark:prose-invert">
@@ -95,4 +102,22 @@ export default function Post({ params }: { params: { slug: string } }) {
       </article>
     </section>
   );
+}
+
+async function Views({ slug }: { slug: string }) {
+  const viewsData = (await redis.get("views")) as {
+    slug: string;
+    views: number;
+  }[];
+
+  const postViews = viewsData.find((view) => view.slug === slug);
+  if (postViews) {
+    postViews.views += 1;
+  } else {
+    viewsData.push({ slug, views: 1 });
+  }
+
+  await redis.set("views", JSON.stringify(viewsData));
+
+  return <ViewCounter slug={slug} allViews={viewsData} />;
 }

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Link } from "next-view-transitions";
 import { getBlogPosts } from "~~/blog";
+import { redis } from "~~/lib/redis";
+import { ViewCounter } from "./view-counter";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -50,6 +53,10 @@ export default function BlogPage() {
                     year: "numeric",
                   })
                   .toLowerCase()}
+                <Suspense>
+                  {" • "}
+                  <Views slug={post.slug} />
+                </Suspense>
               </p>
             </div>
           </Link>
@@ -57,4 +64,15 @@ export default function BlogPage() {
       </div>
     </section>
   );
+}
+
+async function Views({ slug }: { slug: string }) {
+  const allViews = (await redis.get("views")) as {
+    slug: string;
+    views: number;
+  }[];
+
+  console.log(allViews);
+
+  return <ViewCounter slug={slug} allViews={allViews} />;
 }
