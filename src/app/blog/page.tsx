@@ -72,7 +72,5 @@ async function Views({ slug }: { slug: string }) {
     views: number;
   }[];
 
-  console.log(allViews);
-
   return <ViewCounter slug={slug} allViews={allViews} />;
 }
