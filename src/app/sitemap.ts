@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...defaultPages,
     ...postSlugs.map((e: any) => ({
       url: `https://leotrapani.com/blog/${e.slug}`,
-      lastModified: e.modified_at,
+      lastModified: e.metadata.edited || e.metadata.date,
       changeFrequency: "daily" as "daily",
       priority: 0.8,
     })),
