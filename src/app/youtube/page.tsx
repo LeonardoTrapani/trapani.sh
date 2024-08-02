@@ -67,34 +67,20 @@ export default async function YoutubePage() {
   const response = await fetch(url);
 
   if (!response.ok) {
-    return (
-      <section>
-        <h1 className="mb-8 text-2xl font-medium tracking-tighter">youtube</h1>
-
-        <p className="prose prose-neutral dark:prose-invert">
-          There was an error loading the videos. Please try again later...
-        </p>
-      </section>
-    );
+    throw new Error("Failed to fetch videos from YouTube.");
   }
 
   const videos = await response.json();
 
   if (!videos.items.length) {
-    return (
-      <section>
-        <h1 className="mb-8 text-2xl font-medium tracking-tighter">youtube</h1>
-
-        <p className="prose prose-neutral dark:prose-invert">
-          There are no videos to display. Please check back later...
-        </p>
-      </section>
-    );
+    throw new Error("No videos found");
   }
 
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-medium tracking-tighter">youtube</h1>
+      <h1 className="mb-8 text-2xl font-medium tracking-tighter">
+        youtube (it)
+      </h1>
 
       <div className="grid flex-col gap-8 md:grid-cols-2">
         {videos.items.map((video: YoutubeVideo) => (
