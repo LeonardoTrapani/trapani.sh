@@ -13,7 +13,7 @@ export const projectItems = [
     link: "https://github.com/leonardotrapani/schooler.ai/",
     position: "",
     description:
-      "a web app to organize the school schedules with Artificial Intelligence, creating and managing classes, teachers, sections, and schedules with the help of the latest technologies. built in nextjs.",
+      "a web app to organize the school schedules with Artificial Intelligence, creating and managing classes, teachers, sections, and schedules.",
   },
   {
     name: "utellme",
@@ -22,6 +22,7 @@ export const projectItems = [
     description:
       "a web app to get feedback in the easiest and most efficient way possible. build using nextjs, prisma, typescript and more.",
   },
+  /*
   {
     name: "my diary",
     link: "https://github.com/LeonardoTrapani/MyDiary",
@@ -29,6 +30,7 @@ export const projectItems = [
     description:
       "a web and mobile app to help schedule your homework and high-school related activities. build using react native, nodejs, svelte and more.",
   },
+  */
   {
     name: "all projects →",
     link: "https://github.com/leonardotrapani",
