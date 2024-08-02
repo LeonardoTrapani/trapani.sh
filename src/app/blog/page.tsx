@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Blog about software development, entrepreneurship, and getting ahead as a 18 year old.",
+  keywords: [
+    "blog",
+    "full stack",
+    "software development",
+    "technologies",
+    "nextjs",
+  ],
   openGraph: {
     images: [
       {

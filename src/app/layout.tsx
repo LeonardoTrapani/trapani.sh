@@ -30,11 +30,27 @@ export const metadata: Metadata = {
     "max-video-preview": -1,
     "max-image-preview": "large",
     "max-snippet": -1,
+    googleBot: "index, follow",
   },
+  applicationName: "Leonardo Trapani",
+  creator: "Leonardo Trapani",
+  keywords: [
+    "developer",
+    "entrepreneur",
+    "blog",
+    "portfolio",
+    "Leonardo Trapani",
+    "full stack",
+  ],
   twitter: {
     title: "Leonardo Trapani",
     card: "summary_large_image",
     creator: "@leonardotrapani",
+  },
+  alternates: {
+    types: {
+      "application/rss+xml": "https://leotrapani.com/rss.xml",
+    },
   },
 };
 
