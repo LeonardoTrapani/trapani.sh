@@ -10,6 +10,9 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "test", "production"]),
     YOUTUBE_API_KEY: z.string(),
     YOUTUBE_UPLOADS_PLAYLIST_ID: z.string(),
+    YOUTUBE_VIDEO_IDS: z
+      .string()
+      .transform((val) => val.split(",").map((id) => id.trim())),
     REDIS_URL: z.string(),
     REDIS_TOKEN: z.string(),
   },
@@ -31,6 +34,7 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,
     YOUTUBE_UPLOADS_PLAYLIST_ID: process.env.YOUTUBE_UPLOADS_PLAYLIST_ID,
+    YOUTUBE_VIDEO_IDS: process.env.YOUTUBE_VIDEO_IDS,
     REDIS_URL: process.env.REDIS_URL,
     REDIS_TOKEN: process.env.REDIS_TOKEN,
 
