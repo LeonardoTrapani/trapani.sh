@@ -70,7 +70,6 @@ export default async function YoutubePage() {
   if (!videos.length) {
     throw new Error("No videos found");
   }
-  console.log(videos);
 
   return (
     <section>
