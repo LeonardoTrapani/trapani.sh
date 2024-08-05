@@ -9,19 +9,26 @@ export const projectItems = [
       "a personalized code editor. my carefully crafted and customized neovim configuration for a reusable and efficient code editor. built using neovim and lua.",
   },
   {
+    name: "portfolio",
+    link: "https://github.com/LeonardoTrapani/leotrapani.com/",
+    position: "",
+    description:
+      "the website you are currently visiting. my personal portfolio and blog that I use to share who I am, and try to provide value to others.",
+  },
+  {
     name: "schooler.ai",
     link: "https://github.com/leonardotrapani/schooler.ai/",
     position: "",
     description:
       "a web app to organize the school schedules with Artificial Intelligence, creating and managing classes, teachers, sections, and schedules.",
   },
-  {
-    name: "utellme",
-    link: "https://utellme.app",
-    position: "",
-    description:
-      "a web app to get feedback in the easiest and most efficient way possible. build using nextjs, prisma, typescript and more.",
-  },
+  // {
+  //   name: "utellme",
+  //   link: "https://utellme.app",
+  //   position: "",
+  //   description:
+  //     "a web app to get feedback in the easiest and most efficient way possible. build using nextjs, prisma, typescript and more.",
+  // },
   /*
   {
     name: "my diary",
