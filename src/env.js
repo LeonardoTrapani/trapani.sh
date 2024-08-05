@@ -8,16 +8,14 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
-    YOUTUBE_API_KEY: z.string(),
-    YOUTUBE_UPLOADS_PLAYLIST_ID: z.string(),
+    YOUTUBE_API_KEY: z.string().min(1),
+    YOUTUBE_UPLOADS_PLAYLIST_ID: z.string().min(1),
     YOUTUBE_VIDEO_IDS: z
       .string()
       .transform((val) => val.split(",").map((id) => id.trim())),
-    REDIS_URL: z.string(),
-    REDIS_TOKEN: z.string(),
-    POSTMARK_API_TOKEN: z.string().min(1),
-    SMTP_FROM: z.string().min(1),
-    POSTMARK_WELCOME_TEMPLATE_ID: z.string().min(1),
+    REDIS_URL: z.string().min(1),
+    REDIS_TOKEN: z.string().min(1),
+    PLUNK_API_KEY: z.string().min(1),
   },
 
   /**
@@ -40,9 +38,7 @@ export const env = createEnv({
     YOUTUBE_VIDEO_IDS: process.env.YOUTUBE_VIDEO_IDS,
     REDIS_URL: process.env.REDIS_URL,
     REDIS_TOKEN: process.env.REDIS_TOKEN,
-    POSTMARK_API_TOKEN: process.env.POSTMARK_API_TOKEN,
-    SMTP_FROM: process.env.SMTP_FROM,
-    POSTMARK_WELCOME_TEMPLATE_ID: process.env.POSTMARK_WELCOME_TEMPLATE_ID,
+    PLUNK_API_KEY: process.env.PLUNK_API_KEY,
 
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
