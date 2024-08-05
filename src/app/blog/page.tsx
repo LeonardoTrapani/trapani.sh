@@ -4,6 +4,7 @@ import { getBlogPosts } from "~~/blog";
 import { redis } from "~~/lib/redis";
 import { ViewCounter } from "./view-counter";
 import { Suspense } from "react";
+import { NewsletterForm } from "./newsletter-form";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -34,6 +35,11 @@ export default function BlogPage() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-medium tracking-tighter">blog</h1>
+
+      <div className="my-8">
+        <p className="mb-4 font-medium">subscribe for updates. no spam.</p>
+        <NewsletterForm />
+      </div>
 
       <div className="flex flex-col gap-8">
         {posts.map((post) => (
