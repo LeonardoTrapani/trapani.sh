@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   description:
     "All of Leonardo Trapani's videos in one place. Watch tutorials, vlogs, and more.",
   keywords: [
+    "Leonardo Trapani",
     "youtube",
     "tutorials",
     "vlogs",

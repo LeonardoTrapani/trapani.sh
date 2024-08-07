@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "Leonardo Trapani",
     template: "%s | Leonardo Trapani",
   },
-  description: "Developer, Entrepreneur, Teenager",
+  description: "Leonardo Trapani: Developer, Entrepreneur, Teenager",
   openGraph: {
     title: "Leonardo Trapani",
     description: "Developer, Entrepreneur, Teenager",
@@ -35,11 +35,11 @@ export const metadata: Metadata = {
   applicationName: "Leonardo Trapani",
   creator: "Leonardo Trapani",
   keywords: [
+    "Leonardo Trapani",
     "developer",
     "entrepreneur",
     "blog",
     "portfolio",
-    "Leonardo Trapani",
     "full stack",
   ],
   twitter: {

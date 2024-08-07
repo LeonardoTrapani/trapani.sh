@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description:
     "Blog about software development, entrepreneurship, and getting ahead as a 18 year old.",
   keywords: [
+    "Leonardo Trapani",
     "blog",
     "full stack",
     "software development",
