@@ -5,6 +5,7 @@ import { MDX } from "~~/app/blog/[slug]/mdx";
 import { getBlogPostBySlug } from "~~/blog";
 import { redis } from "~~/lib/redis";
 import { ViewCounter } from "../view-counter";
+import { NewsletterForm } from "../newsletter-form";
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-US", {
@@ -100,6 +101,12 @@ export default function Post({ params }: { params: { slug: string } }) {
       <article className="prose prose-neutral dark:prose-invert">
         <MDX source={post.content} />
       </article>
+
+      <p className="mt-14 text-lg font-medium">
+        Enjoyed this post? Subscribe to the newsletter to get updates on new
+        content!
+      </p>
+      <NewsletterForm />
     </section>
   );
 }
