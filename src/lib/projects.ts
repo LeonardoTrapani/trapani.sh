@@ -13,7 +13,7 @@ export const projectItems = [
     link: "https://github.com/LeonardoTrapani/leotrapani.com/",
     position: "",
     description:
-      "the website you are currently visiting. my personal portfolio and blog that I use to share who I am, and try to provide value to others.",
+      "the website you are currently visiting. my personal portfolio and blog that I use to share who I am, and to provide value to others.",
   },
   {
     name: "schooler.ai",

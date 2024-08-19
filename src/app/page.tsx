@@ -140,27 +140,64 @@ export default function HomePage() {
             >
               datapizza
             </a>
-            &nbsp;- entrepreneur
+            &nbsp;- startup founder
           </p>
         </div>
       </div>
+
+      <ul className="font-sm my-6 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="mailto:leonard.trapani@gmail.com"
+          >
+            <p className="mr-1 h-7">email</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.linkedin.com/in/leonardotrapani/"
+          >
+            <p className="mr-1 h-7">linkedin</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/leonardotrapani"
+          >
+            <p className="mr-1 h-7">github</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.youtube.com/@leotrapani"
+          >
+            <p className="mr-1 h-7">youtube</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+      </ul>
 
       <p className="prose prose-neutral dark:prose-invert">
         i&apos;m a 18 y/o <b>software developer</b> and <b>entrepreneur</b>. i
         love building exciting projects and engaging in creative entrepreneurial
         endeavours. i love studying the&nbsp;
         <b>latest technologies</b> in the software development space, and
-        applying them in real-world projects. if i&apos;m not coding, i&apos;m
-        likely reading books, trying to start a{" "}
-        <a
-          href="https://www.youtube.com/@leotrapani"
-          target="_blank"
-          className="prose font-medium underline decoration-[0.1em] underline-offset-2 dark:prose-invert"
-        >
-          youtube channel
-        </a>
-        , playing rugby or practicing jiu-jitsu. raised in milan, spent an
-        exchange year in vancouver.
+        applying them in real-world projects.
       </p>
 
       <div className="my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -196,54 +233,6 @@ export default function HomePage() {
           all posts →
         </Link>
       </div>
-
-      <h3 className="mt-8 text-xl font-medium">links</h3>
-      <ul className="font-sm mt-4 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="mailto:leonard.trapani@gmail.com"
-          >
-            <p className="mr-1 h-7">email</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/leonardotrapani"
-          >
-            <p className="mr-1 h-7">github</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://www.linkedin.com/in/leonardotrapani/"
-          >
-            <p className="mr-1 h-7">linkedin</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://www.youtube.com/@leotrapani"
-          >
-            <p className="mr-1 h-7">youtube</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-      </ul>
     </main>
   );
 }
