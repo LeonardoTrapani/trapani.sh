@@ -7,6 +7,7 @@ import { clx } from "~~/utils";
 import { Navbar } from "~~/app/navbar";
 import { ViewTransitions } from "next-view-transitions";
 import { Analytics } from "@vercel/analytics/react";
+import { CSPostHogProvider } from "~~/lib/analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://leotrapani.com"),
@@ -70,11 +71,13 @@ export default function RootLayout({
         )}
       >
         <body className="mx-4 mb-40 mt-8 flex max-w-2xl flex-col antialiased md:flex-row lg:mx-auto">
-          <main className="mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0">
-            <Navbar />
-            {children}
-            <Analytics />
-          </main>
+          <CSPostHogProvider>
+            <main className="mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0">
+              <Navbar />
+              {children}
+              <Analytics />
+            </main>
+          </CSPostHogProvider>
         </body>
       </html>
     </ViewTransitions>

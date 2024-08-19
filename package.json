@@ -20,6 +20,7 @@
     "next": "15.0.0-rc.0",
     "next-mdx-remote": "^5.0.0",
     "next-view-transitions": "^0.2.0",
+    "posthog-js": "^1.156.0",
     "react": "19.0.0-rc-58af67a8f8-20240628",
     "react-dom": "19.0.0-rc-58af67a8f8-20240628",
     "zod": "^3.23.8"
