@@ -11,9 +11,9 @@ const navItems = {
   "/blog": {
     name: "blog",
   },
-  "/youtube": {
-    name: "youtube",
-  },
+  // "/youtube": {
+  //   name: "youtube",
+  // },
 };
 
 export function Navbar() {

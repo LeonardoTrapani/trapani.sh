@@ -7,7 +7,8 @@ export const subscribe = async (formData: FormData) => {
   const email = z.string().email().safeParse(formData.get("email"));
 
   if (!email.success) {
-    return { error: "invalid email", success: false };
+    console.error("invalid email", email.error);
+    return;
   }
 
   const response = (await fetch("https://api.useplunk.com/v1/track", {
@@ -20,8 +21,9 @@ export const subscribe = async (formData: FormData) => {
   })) as unknown as { success: boolean };
 
   if (response.success) {
-    return { success: true };
+    return;
   }
 
-  return { error: "failed to subscribe", success: false };
+  console.error("failed to subscribe", response);
+  return;
 };

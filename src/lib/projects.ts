@@ -2,26 +2,43 @@ import { ExperienceItem } from "~~/app/page";
 
 export const projectItems = [
   {
-    name: "nvim config",
-    link: "https://github.com/LeonardoTrapani/dotfiles/tree/main/nvim",
+    name: "juggle content",
+    link: "https://jugglecontent.com",
     position: "",
     description:
-      "a personalized code editor. my carefully crafted and customized neovim configuration for a reusable and efficient code editor. built using neovim and lua.",
+      "a content management system to repurpose content from one platform to another.",
+    github: "https://github.com/leonardotrapani/jugglecontent",
+  },
+  {
+    name: "the closer fit",
+    link: "https://thecloserfit.com",
+    position: "",
+    description:
+      "a web application that creates custom AI interviews based on the user’s resume and lets the user practice and receive feedback to ace his following job interview.",
+    github: "https://github.com/leonardotrapani/thecloserfit",
   },
   {
     name: "portfolio",
-    link: "https://github.com/LeonardoTrapani/leotrapani.com/",
+    link: "https://leotrapani.com/",
     position: "",
     description:
       "the website you are currently visiting. my personal portfolio and blog that I use to share who I am, and to provide value to others.",
+    github: "https://github.com/LeonardoTrapani/leotrapani.com/",
   },
-  {
-    name: "schooler.ai",
-    link: "https://github.com/leonardotrapani/schooler.ai/",
-    position: "",
-    description:
-      "a web app to organize the school schedules with Artificial Intelligence, creating and managing classes, teachers, sections, and schedules.",
-  },
+  // {
+  //   name: "nvim config",
+  //   link: "https://github.com/LeonardoTrapani/dotfiles/tree/main/nvim",
+  //   position: "",
+  //   description:
+  //     "a personalized code editor. my carefully crafted and customized neovim configuration for a reusable and efficient code editor. built using neovim and lua.",
+  // },
+  // {
+  //   name: "schooler.ai",
+  //   link: "https://github.com/leonardotrapani/schooler.ai/",
+  //   position: "",
+  //   description:
+  //     "a web app to organize the school schedules with Artificial Intelligence, creating and managing classes, teachers, sections, and schedules.",
+  // },
   // {
   //   name: "utellme",
   //   link: "https://utellme.app",
