@@ -1,5 +1,5 @@
 ---
-title: "The Importance of Analytics at Datapizza: Best Practices and Implementation Strategy"
+title: "Analytics at Datapizza: Importance, Best Practices and Implementation"
 description: "The article discusses Datapizza's approach to using server-side analytics for accurate, consistent data collection, overcoming client-side limitations like ad blockers. It highlights Datapizza's implementation strategies for greater data control and better decision-making, offering insights for optimizing analytics."
 date: "Nov 12, 2024"
 edited: "Nov 12, 2024"
@@ -7,7 +7,7 @@ edited: "Nov 12, 2024"
 
 ## Introduction
 
-At Datapizza, we believe that analytics should serve as the foundation for every business and startup. While assumptions about customer needs can guide early product development, it is crucial to understand what customers **really** want—not just what they say they want or what we think they should want. As Eric Ries aptly puts it in *The Lean Startup*:
+At Datapizza, we believe that analytics should serve as the foundation for every business and startup. While assumptions about customer needs can guide early product development, it is crucial to understand what customers **really** want. As Eric Ries aptly puts it in *The Lean Startup*:
 
 > We must learn what customers really want, not what they say they want or what we think they should want.
 
@@ -63,14 +63,24 @@ To gain more control and consistency in our analytics, we decided to move to ser
 - **Higher data accuracy and consistency**: Ad blockers do not block requests made to our own servers.
 - **Enhanced control**: We maintain full control over the data collected and processed.
 - **No third-party dependencies**: Our data remains in our hands, ensuring better data security and privacy.
+- **Improved data privacy**: Server-side analytics keeps sensitive user information on our servers, reducing the risk of exposure to third-party services.
+- **Faster page load times**: Offloading analytics to the server reduces the amount of JavaScript loaded on the client side, improving page speed and user experience.
+- **Enhanced data security**: Data is processed on our secure servers, minimizing the risk of data breaches or interception during transmission.
+- **Better cross-domain tracking**: Server-side tracking enables us to manage cookies and identifiers centrally, providing more accurate tracking of users across multiple domains.
+- **Consistent tracking across devices**: Server-side analytics improves cross-device tracking by linking data through server identifiers, avoiding the inconsistencies often found in client-side tracking.
 
 ### Potential Challenges of Server-Side Analytics
 - **Increased server traffic**: Passing all tracking functions through our servers can potentially slow down performance and increase costs. We still have not observed any major costs or slowdowns, but this might be thanks to a good and optimized hosting infrastructure.
 - **Complexity**: Server-side analytics can be challenging and time-consuming to implement correctly.
 
 ## Implementing Server-Side Analytics
+The key issues that are present with Server-Side Analytics are:
+- User identification
+- User informations, such as Browser, UTMs,
 
-On the frontend, we simply make a post request to our servers every time we want to track something, including all cookies and headers.
+Here is how we handle it:
+
+It all starts on the frontend, where we simply make a post request to our servers every time we want to track something, including all cookies and headers.
 
 ```javascript
 export const trackServerAnalytics = (trackData: {
@@ -101,6 +111,8 @@ To ensure we capture accurate data, we handle user information and UTM sources o
 
 ```python
 from urllib.parse import urlparse, parse_qs
+
+# rest of the code (django routes, imports, data serialization...)
 
 parsed = parse_user_agent(request.headers.get("User-Agent", ""))
 mixpanel_properties.update({
@@ -138,6 +150,7 @@ const setIdentifierCookieIfNotSet = (isDev) => {
   return deviceId;
 };
 ```
+Here are the utility functions used in setIdentifierCookieIfNotSet, if interested:
 ```javascript
 function generateUniqueId(): string {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
@@ -178,6 +191,11 @@ function setCookie(name: string, value: string, days: number): void {
 
 On the backend, we then update the same dict we used previously and that we will pass to mixpanel.
 ```python
+device_id = request.COOKIES.get("device_id")
+
+if not device_id:
+  raise NotAcceptable("Device ID is required")
+
 mixpanel_properties.update({
   "$user_id": mixpanel_properties.get("uuid"),
   "$device_id": device_id,
@@ -189,7 +207,6 @@ Finally, we can then call the mixpanel sdk
 # Note: leave the first argument blank here, since we're passing $device_id and $user_id as mixpanel_roperties.
 mp.track("", event_name, mixpanel_properties)
 ```
-
 
 ## Deduplication
 

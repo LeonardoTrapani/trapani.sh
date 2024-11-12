@@ -15,7 +15,8 @@ export const metadata: Metadata = {
     default: "Leonardo Trapani",
     template: "%s | Leonardo Trapani",
   },
-  description: "Leonardo Trapani: Developer, Entrepreneur, Teenager",
+  description:
+    "software developer and entrepreneur. i build exciting projects and engage in creative entrepreneurial endeavours. i turn mine and your ideas into reality, with the latest technologies in the software development space",
   openGraph: {
     title: "Leonardo Trapani",
     description: "Developer, Entrepreneur, Teenager",

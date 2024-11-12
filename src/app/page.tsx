@@ -243,7 +243,7 @@ export default function HomePage() {
               <p className="font-medium underline decoration-neutral-400 decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600">
                 {post.metadata.title.toLowerCase()}
               </p>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400">
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 text-nowrap">
                 {new Date(post.metadata.date)
                   .toLocaleDateString("en-US", {
                     month: "short",
