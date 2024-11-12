@@ -1,0 +1,206 @@
+---
+title: "The Importance of Analytics at Datapizza: Best Practices and Implementation Strategy"
+description: "The article discusses Datapizza's approach to using server-side analytics for accurate, consistent data collection, overcoming client-side limitations like ad blockers. It highlights Datapizza's implementation strategies for greater data control and better decision-making, offering insights for optimizing analytics."
+date: "Nov 12, 2024"
+edited: "Nov 12, 2024"
+---
+
+## Introduction
+
+At Datapizza, we believe that analytics should serve as the foundation for every business and startup. While assumptions about customer needs can guide early product development, it is crucial to understand what customers **really** want—not just what they say they want or what we think they should want. As Eric Ries aptly puts it in *The Lean Startup*:
+
+> We must learn what customers really want, not what they say they want or what we think they should want.
+
+To make this a reality, we have optimized every aspect of our data strategy at Datapizza. In this post, we’ll delve into how we collect data, why we chose to move away from client-side analytics, and how we implemented a robust server-side analytics solution.
+
+## How We Collect Data at Datapizza
+
+Our approach to data at Datapizza is simple: data-driven decisions guide everything we do. This means that understanding user behavior and collecting accurate data are critical for delivering products that truly meet our customers’ needs.
+
+![The Lean Startup Cicle](/images/importanceofanalytics/theleanstartupcicle.jpeg)
+
+## Common Pitfalls in Data Analytics Implementation
+
+Despite the widespread recognition of the importance of data, many businesses implement analytics incorrectly by using client-side analytics exclusively. Client-side analytics involves sending data directly from the browser to an analytics provider, such as Mixpanel, Google Tag Manager, or PostHog. Unfortunately, this approach has significant limitations.
+![Client-Side Analytics](/images/importanceofanalytics/clientsideanalytics.png)
+
+## The Challenge of Ad Blockers in Analytics
+
+One major problem with client-side analytics is the prevalence of ad blockers. According to [Statista's Digital 2024 Global Overview Report](https://datareportal.com/reports/digital-2024-global-overview-report), nearly 1 billion people use ad blockers or JavaScript blockers. These tools recognize requests to analytics providers and block them, resulting in incomplete or inconsistent data. Given that Datapizza’s recruiting platform attracts tech-savvy users who are more likely to use ad blockers, this posed a major issue for us.
+![Client-Side Analytics with Ad Blockers](/images/importanceofanalytics/withadblockers.png)
+
+## Addressing the Ad Blocker Problem
+
+To overcome this challenge, we explored various solutions. One option is using a proxy-based service like [Data Unlocker](https://www.dataunlocker.com/). Data Unlocker modifies requests to bypass filtering lists and ensures analytics data is transmitted more effectively.
+![How do data unlockers work](/images/importanceofanalytics/dataunlocker.png)
+
+### How Data Unlocker Works
+- Encodes and decodes client request and response data to bypass filtering lists.
+- Detects and mitigates content blocker intrusion.
+- Recovers stubbed resources (blocked or altered resources).
+- Proxies client requests to ensure they are properly routed to analytics servers.
+- Continuously monitors web applications and content filtering lists.
+
+### Pros and Cons of Using Data Unlocker
+
+#### Pros
+- Easy to implement
+- Achieves relatively good results
+
+#### Cons
+- High cost over time
+- Dependence on a third-party service for data handling
+- Limited control over data
+- Increasing sophistication of ad blockers may limit effectiveness
+- Some data may still be blocked
+
+## Why We Opted for Server-Side Analytics
+
+To gain more control and consistency in our analytics, we decided to move to server-side analytics. This approach involves sending data to our own servers before forwarding it to analytics providers.
+![Server-Side Analytics](/images/importanceofanalytics/serversideanalytics.png)
+
+### Advantages of Server-Side Analytics
+- **Higher data accuracy and consistency**: Ad blockers do not block requests made to our own servers.
+- **Enhanced control**: We maintain full control over the data collected and processed.
+- **No third-party dependencies**: Our data remains in our hands, ensuring better data security and privacy.
+
+### Potential Challenges of Server-Side Analytics
+- **Increased server traffic**: Passing all tracking functions through our servers can potentially slow down performance and increase costs. We still have not observed any major costs or slowdowns, but this might be thanks to a good and optimized hosting infrastructure.
+- **Complexity**: Server-side analytics can be challenging and time-consuming to implement correctly.
+
+## Implementing Server-Side Analytics
+
+On the frontend, we simply make a post request to our servers every time we want to track something, including all cookies and headers.
+
+```javascript
+export const trackServerAnalytics = (trackData: {
+  data: any;
+  event_name: string;
+  event_id: string;
+  //more properties based on what has to be tracked
+}) => {
+  return axios.post(
+    backendBaseUrl + "/track_analytics/",
+    {
+      ...trackData,
+    },
+    {
+      withCredentials: true,
+    }
+  );
+};
+```
+
+### Example: Backend Integration for Mixpanel
+
+We integrated server-side analytics on our Django backend servers, to implement server-side analytics for Mixpanel. Similar implementations can be adapted for other analytics providers and backend frameworks. Take the following as an example to understand the necessary steps and difficulties when implementing it.
+
+### Handling User Information and UTM Sources
+
+To ensure we capture accurate data, we handle user information and UTM sources on the server. This data, typically managed by client-side SDKs, is essential for optimizing our analytics.
+
+```python
+from urllib.parse import urlparse, parse_qs
+
+parsed = parse_user_agent(request.headers.get("User-Agent", ""))
+mixpanel_properties.update({
+    "$browser": parsed["user_agent"]["family"],
+    "$device": parsed["device"]["family"],
+    "$os": parsed["os"]["family"],
+    "$current_url": mixpanel_properties.get("action_source_url"),
+})
+
+mixpanel_properties["ip"] = request.META.get("REMOTE_ADDR")
+
+if "Referer" in request.headers:
+  url_parsed = urlparse(request.headers["Referer"])
+  mixpanel_properties.update({
+      "$referrer": request.headers["Referer"],
+      "$referring_domain": url_parsed.hostname,
+      })
+  query_params = parse_qs(url_parsed.query)
+    utm_keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]
+    utm_values = {key: query_params[key][0] for key in utm_keys if query_params.get(key)}
+  mixpanel_properties.update(utm_values)
+  ```
+
+### User Identification in Server-Side Analytics
+
+Mixpanel groups actions by user sessions. By passing a `user_id` property, we can track user events accurately. To handle unauthenticated users and track the entire user session when he authenticates, we also use a `device_id` generated on the frontend.
+
+```javascript
+const setIdentifierCookieIfNotSet = (isDev) => {
+  let deviceId = getCookie("device_id");
+  if (!deviceId) {
+    deviceId = generateUniqueId();
+    setCookie("device_id", deviceId, 365);
+  }
+  return deviceId;
+};
+```
+```javascript
+function generateUniqueId(): string {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+    /[xy]/g,
+    function (c) {
+      const r = (Math.random() * 16) | 0,
+        v = c === "x" ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    }
+  );
+}
+
+function getCookie(name: string): string | undefined {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(";").shift();
+}
+
+function setCookie(name: string, value: string, days: number): void {
+  let expires = "";
+  if (days) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  const isLocalhost = window.location.hostname === "localhost";
+  const secureFlag = isLocalhost ? "" : "; Secure";
+  const sameSiteFlag = "; SameSite=None"; // Required for cross-origin
+  const domainFlag = "; domain=.datapizza.tech"; // Allow cookies to be shared across subdomains
+
+  isDev
+    ? (document.cookie = `${name}=${value || ""}; path=/`)
+    : (document.cookie = `${name}=${
+        value || ""
+      }${expires}; path=/${sameSiteFlag}${secureFlag}${domainFlag}`);
+}
+```
+
+On the backend, we then update the same dict we used previously and that we will pass to mixpanel.
+```python
+mixpanel_properties.update({
+  "$user_id": mixpanel_properties.get("uuid"),
+  "$device_id": device_id,
+})
+```
+
+Finally, we can then call the mixpanel sdk
+```python
+# Note: leave the first argument blank here, since we're passing $device_id and $user_id as mixpanel_roperties.
+mp.track("", event_name, mixpanel_properties)
+```
+
+
+## Deduplication
+
+For other analytics providers, such as Facebook Pixel (`fbq`), we combine client-side and server-side analytics to leverage the strengths of both. Deduplication is achieved by passing the same `event_id` to both client and server events, ensuring accurate data without duplication, and the same even showing twice.
+
+## Summary of Our Analytics Strategy at Datapizza
+
+By adopting a robust server-side analytics solution, Datapizza ensures data accuracy, consistency, and control. This allows us to make better-informed decisions, optimize our platform, and serve our users more effectively.
+
+To implement an effective server-side analytics solution, it is important to still track utm sources, browser's informations, and user authentication.
+
+## Conclusion
+
+Analytics is at the core of our success at Datapizza. For startups looking to grow, a well-implemented analytics strategy is key to understanding customer needs and driving business growth.
