@@ -17,7 +17,7 @@ To make this a reality, we have optimized every aspect of our data strategy at D
 
 Our approach to data at Datapizza is simple: data-driven decisions guide everything we do. This means that understanding user behavior and collecting accurate data are critical for delivering products that truly meet our customers’ needs.
 
-![The Lean Startup Cicle](/images/importanceofanalytics/theleanstartupcicle.jpeg)
+![The Lean Startup Cycle](/images/importanceofanalytics/theleanstartupcicle.jpeg)
 
 ## Common Pitfalls in Data Analytics Implementation
 
@@ -75,8 +75,8 @@ To gain more control and consistency in our analytics, we decided to move to ser
 
 ## Implementing Server-Side Analytics
 The key issues that are present with Server-Side Analytics are:
-- User identification
-- User informations, such as Browser, UTMs,
+- User Identification
+- User Informations, such as Browser, UTMs,
 
 Here is how we handle it:
 
@@ -210,7 +210,7 @@ mp.track("", event_name, mixpanel_properties)
 
 ## Deduplication
 
-For other analytics providers, such as Facebook Pixel (`fbq`), we combine client-side and server-side analytics to leverage the strengths of both. Deduplication is achieved by passing the same `event_id` to both client and server events, ensuring accurate data without duplication, and the same even showing twice.
+For other analytics providers, such as Facebook Pixel (`fbq`), we combine client-side and server-side analytics to leverage the strengths of both. Deduplication is achieved by passing the same `event_id` to both client and server events, ensuring accurate data without duplication, and the same event showing twice.
 
 ## Summary of Our Analytics Strategy at Datapizza
 
