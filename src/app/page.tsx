@@ -178,6 +178,17 @@ export default function HomePage() {
 
       <ul className="font-sm my-6 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
         <li>
+          <Link
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="/resume.pdf"
+          >
+            <p className="mr-1 h-7">resume</p>
+            <UpRightArrowIcon />
+          </Link>
+        </li>
+        <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
@@ -243,7 +254,7 @@ export default function HomePage() {
               <p className="font-medium underline decoration-neutral-400 decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600">
                 {post.metadata.title.toLowerCase()}
               </p>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400 text-nowrap">
+              <p className="text-nowrap text-sm text-neutral-600 dark:text-neutral-400">
                 {new Date(post.metadata.date)
                   .toLocaleDateString("en-US", {
                     month: "short",
