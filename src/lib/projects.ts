@@ -19,11 +19,11 @@ export const projectItems = [
   },
   {
     name: "portfolio",
-    link: "https://leotrapani.com/",
+    link: "https://trapani.sh/",
     position: "",
     description:
       "the website you are currently visiting. my personal portfolio and blog that I use to share who I am, and to provide value to others.",
-    github: "https://github.com/LeonardoTrapani/leotrapani.com/",
+    github: "https://github.com/LeonardoTrapani/trapani.sh/",
   },
   // {
   //   name: "nvim config",

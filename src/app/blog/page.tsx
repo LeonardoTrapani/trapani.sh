@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "https://leotrapani.com/og/home?title=leonardo trapani's blog",
+        url: "https://trapani.sh/og/home?title=leonardo trapani's blog",
       },
     ],
   },

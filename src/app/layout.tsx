@@ -10,7 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { CSPostHogProvider } from "~~/lib/analytics";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://leotrapani.com"),
+  metadataBase: new URL("https://trapani.sh"),
   title: {
     default: "Leonardo Trapani",
     template: "%s | Leonardo Trapani",
@@ -20,11 +20,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Leonardo Trapani",
     description: "Developer, Entrepreneur, Teenager",
-    url: "https://leotrapani.com",
+    url: "https://trapani.sh",
     siteName: "Leonardo Trapani",
     locale: "en_US",
     type: "website",
-    images: ["https://leotrapani.com/og/home"],
+    images: ["https://trapani.sh/og/home"],
   },
   robots: {
     index: true,
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     types: {
-      "application/rss+xml": "https://leotrapani.com/rss.xml",
+      "application/rss+xml": "https://trapani.sh/rss.xml",
     },
   },
 };

@@ -95,10 +95,10 @@ export async function GET(request: Request) {
                   fontSize: "28px",
                 }}
               >
-                leotrapani.com
+                trapani.sh
               </p>
               <img
-                src="https://leotrapani.com/pfp.jpeg"
+                src="https://trapani.sh/pfp.jpeg"
                 alt="leonardo trapani's icon"
                 width={70}
                 height={70}
