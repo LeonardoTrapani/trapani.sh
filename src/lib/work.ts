@@ -10,7 +10,7 @@ export const workItems = [
   },
   {
     name: "freelance developer & technical founder",
-    link: "mailto:leonard.trapani@gmail.com",
+    link: "mailto:leo@trapani.sh",
     position: "self-employed (sep 2022 - present)",
     description:
       "transform startup and app ideas into working products, delivering full development lifecycle. built nutrivetpet from zero to production: complete pet nutrition platform serving 3,000+ monthly paying users, earning equity stake for technical leadership.",

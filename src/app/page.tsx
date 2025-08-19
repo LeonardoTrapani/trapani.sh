@@ -193,7 +193,7 @@ export default function HomePage() {
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
-            href="mailto:leonard.trapani@gmail.com"
+            href="mailto:leo@trapani.sh"
           >
             <p className="mr-1 h-7">email</p>
             <UpRightArrowIcon />
