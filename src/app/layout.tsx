@@ -1,13 +1,13 @@
-import "~~/styles/globals.css";
+import type { Metadata } from "next"
+import { Geist_Mono } from "next/font/google"
+import "./globals.css"
+import { Navbar } from "../components/navbar"
 
-import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-import { clx } from "~~/utils";
-import { Navbar } from "~~/app/navbar";
-import { ViewTransitions } from "next-view-transitions";
-import { Analytics } from "@vercel/analytics/react";
-import { CSPostHogProvider } from "~~/lib/analytics";
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist-mono",
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://trapani.sh"),
@@ -15,11 +15,10 @@ export const metadata: Metadata = {
     default: "Leonardo Trapani",
     template: "%s | Leonardo Trapani",
   },
-  description:
-    "software developer and entrepreneur. i build exciting projects and engage in creative entrepreneurial endeavours. i turn mine and your ideas into reality, with the latest technologies in the software development space",
+  description: "19, developer, dreamer and entrepreneur.",
   openGraph: {
     title: "Leonardo Trapani",
-    description: "Developer, Entrepreneur, Teenager",
+    description: "19, developer, dreamer and entrepreneur.",
     url: "https://trapani.sh",
     siteName: "Leonardo Trapani",
     locale: "en_US",
@@ -32,55 +31,29 @@ export const metadata: Metadata = {
     "max-video-preview": -1,
     "max-image-preview": "large",
     "max-snippet": -1,
-    googleBot: "index, follow",
   },
-  applicationName: "Leonardo Trapani",
-  creator: "Leonardo Trapani",
-  keywords: [
-    "Leonardo Trapani",
-    "developer",
-    "entrepreneur",
-    "blog",
-    "portfolio",
-    "full stack",
-  ],
   twitter: {
     title: "Leonardo Trapani",
     card: "summary_large_image",
-    creator: "@leonardotrapani",
+    creator: "@trapani",
   },
-  alternates: {
-    types: {
-      "application/rss+xml": "https://trapani.sh/rss.xml",
-    },
-  },
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <ViewTransitions>
-      <html
-        lang="en"
-        className={clx(
-          "bg-neutral-100 text-black dark:bg-neutral-950 dark:text-white",
-          GeistSans.variable,
-          GeistMono.variable,
-        )}
+    <html lang="en">
+      <body
+        className={`${geistMono.variable} antialiased min-h-screen font-mono`}
       >
-        <body className="mx-4 mb-40 mt-8 flex max-w-2xl flex-col antialiased md:flex-row lg:mx-auto">
-          <CSPostHogProvider>
-            <main className="mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0">
-              <Navbar />
-              {children}
-              <Analytics />
-            </main>
-          </CSPostHogProvider>
-        </body>
-      </html>
-    </ViewTransitions>
-  );
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          <Navbar />
+          {children}
+        </div>
+      </body>
+    </html>
+  )
 }
