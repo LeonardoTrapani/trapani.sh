@@ -3,6 +3,7 @@ import { Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { Navbar } from "../components/navbar"
 import { Analytics } from "@vercel/analytics/next"
+import { PostHogProvider } from "../providers/PostHogProvider"
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
@@ -50,11 +51,13 @@ export default function RootLayout({
       <body
         className={`${geistMono.variable} antialiased min-h-screen font-mono`}
       >
-        <div className="max-w-4xl mx-auto px-4 py-8">
-          <Navbar />
-          {children}
-          <Analytics />
-        </div>
+        <PostHogProvider>
+          <div className="max-w-4xl mx-auto px-4 py-8">
+            <Navbar />
+            {children}
+            <Analytics />
+          </div>
+        </PostHogProvider>
       </body>
     </html>
   )
